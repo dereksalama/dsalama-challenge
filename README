@@ -1,0 +1,19 @@
+Derek Salama
+Jana Coding Challenge
+10/14/2012
+
+I didn't realize it until quite late, but I could not schedule an event on Google App Engine that uses the Twilio API
+to make a call because they use the Apache HTTPClient, which is not supported by GAE. As such, the call needs to be
+triggered manually by running "RedditCall.class". Had the incompatibility not been an issue, I simply would have used
+the code from RedditCall.java in the doGet function of JanachallengeServlet, as the GAE cron feature just does a GET
+request at the specified time.
+
+Basic Structure:
+
+-RedditCall.java uses the Twilio REST client to initiate the call
+
+-JanachallengeServlet (running at http://janachallenge.appspot.com/janachallenge) serves up the call.jsp page
+
+-call.jsp creates the xml with the "say" command and proper text
+
+-RedditParser fetches the home page as a json object and extracts the title of the top posting 
